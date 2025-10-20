@@ -52,10 +52,22 @@ export default function Home() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            <Link href="/services" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base">Services</Link>
-            <Link href="/pricing" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base">Pricing</Link>
-            <Link href="/contact" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base">Contact us</Link>
-            <Link href="/about" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base">About us</Link>
+            <Link href="/services" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base relative group">
+              Services
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link href="/pricing" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base relative group">
+              Pricing
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link href="/contact" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base relative group">
+              Contact us
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link href="/about" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base relative group">
+              About us
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           </div>
 
           {/* Desktop Auth Buttons */}
