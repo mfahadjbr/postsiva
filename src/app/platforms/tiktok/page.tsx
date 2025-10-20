@@ -70,35 +70,35 @@ export default function TikTokPage() {
       </div>
 
       {/* Header */}
-      <header className="relative z-10 px-6 py-4">
+      <header className="relative z-50 px-4 sm:px-6 py-3 sm:py-4">
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-orange rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">P</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-orange rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg sm:text-xl">P</span>
             </div>
-            <span className="text-white text-2xl font-bold">Postiva</span>
+            <span className="text-white text-xl sm:text-2xl font-bold">Postiva</span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-orange-400 transition-colors">Home</Link>
-            <Link href="/dashboard" className="text-white hover:text-orange-400 transition-colors">Dashboard</Link>
-            <Link href="#tiktok" className="text-orange-400 border-b-2 border-orange-400 pb-1">TikTok</Link>
-            <Link href="#analytics" className="text-white hover:text-orange-400 transition-colors">Analytics</Link>
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <Link href="/" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base">Home</Link>
+            <Link href="/dashboard" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base">Dashboard</Link>
+            <Link href="#tiktok" className="text-orange-400 border-b-2 border-orange-400 pb-1 text-sm xl:text-base">TikTok</Link>
+            <Link href="#analytics" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base">Analytics</Link>
           </div>
 
           {/* Connect Button */}
           <button
             onClick={() => setShowConnectForm(true)}
-            className="bg-orange-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors pulse-glow"
+            className="hidden lg:block bg-orange-500 text-white px-4 xl:px-6 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors pulse-glow text-sm xl:text-base"
           >
             Connect with TikTok
           </button>
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-white"
+            className="lg:hidden text-white p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,12 +109,93 @@ export default function TikTokPage() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-gray-800">
-            <div className="px-6 py-4 space-y-4">
-              <Link href="/" className="block text-white hover:text-orange-400 transition-colors">Home</Link>
-              <Link href="/dashboard" className="block text-white hover:text-orange-400 transition-colors">Dashboard</Link>
-              <Link href="#tiktok" className="block text-orange-400">TikTok</Link>
-              <Link href="#analytics" className="block text-white hover:text-orange-400 transition-colors">Analytics</Link>
+          <div className="lg:hidden fixed inset-0 z-9999">
+            {/* Background Overlay */}
+            <div className="absolute inset-0 bg-orange-500/95 backdrop-blur-md"></div>
+            
+            {/* Menu Content */}
+            <div className="relative h-full overflow-y-auto z-10000">
+              <div className="bg-orange-600/90 backdrop-blur-sm border-t border-orange-400/30">
+                {/* Close Button */}
+                <div className="flex justify-end p-4">
+                  <button 
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-white hover:text-orange-200 transition-colors p-2"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <div className="px-4 sm:px-6 pb-6 space-y-6">
+                  {/* Navigation Links */}
+                  <div className="space-y-4">
+                    <Link 
+                      href="/" 
+                      className="block text-white hover:text-orange-200 transition-colors py-4 text-lg text-center font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Home
+                    </Link>
+                    <Link 
+                      href="/dashboard" 
+                      className="block text-white hover:text-orange-200 transition-colors py-4 text-lg text-center font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Dashboard
+                    </Link>
+                    <Link 
+                      href="#tiktok" 
+                      className="block text-orange-200 py-4 text-lg text-center font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      TikTok
+                    </Link>
+                    <Link 
+                      href="#analytics" 
+                      className="block text-white hover:text-orange-200 transition-colors py-4 text-lg text-center font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Analytics
+                    </Link>
+                  </div>
+
+                  {/* TikTok Connect Card */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
+                    <div className="text-center">
+                      <h3 className="text-white text-xl font-bold mb-3">TikTok AI Powered</h3>
+                      <div className="flex justify-center mb-2">
+                        <div className="flex space-x-1">
+                          <span className="text-yellow-300 text-lg">★★★★★</span>
+                        </div>
+                      </div>
+                      <p className="text-orange-100 text-sm">1B+ Monthly Users</p>
+                    </div>
+                  </div>
+
+                  {/* Connect Button */}
+                  <div className="pt-4">
+                    <button
+                      onClick={() => {
+                        setShowConnectForm(true);
+                        setIsMenuOpen(false);
+                      }}
+                      className="w-full bg-white text-orange-600 px-6 py-4 rounded-xl font-bold text-lg hover:bg-orange-100 transition-all duration-300 text-center shadow-lg"
+                    >
+                      Connect with TikTok
+                    </button>
+                  </div>
+
+                  {/* Descriptive Text */}
+                  <div className="pt-4">
+                    <p className="text-white text-sm leading-relaxed text-center">
+                      Create viral TikTok content with AI-powered video ideas, trend analysis, 
+                      and hashtag optimization for maximum engagement.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -123,37 +204,37 @@ export default function TikTokPage() {
       {/* Main Content */}
       <main className="relative z-10">
         {/* Hero Section */}
-        <section className="px-6 py-20 text-center">
+        <section className="px-4 sm:px-6 py-12 sm:py-16 md:py-20 text-center">
           <div className="max-w-4xl mx-auto">
             {/* TikTok Badge */}
-            <div className="inline-flex items-center space-x-3 bg-orange-900/50 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-orange-800">
-              <div className="text-2xl">🎵</div>
-              <span className="text-white text-sm font-medium">TikTok Automation</span>
+            <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-orange-900/50 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8 border border-orange-800">
+              <div className="text-xl sm:text-2xl">🎵</div>
+              <span className="text-white text-xs sm:text-sm font-medium">TikTok Automation</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
               Viral Content.<br />
               <span className="text-orange-500">Made Simple.</span>
             </h1>
 
             {/* Description */}
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
               Create viral TikTok content, stay ahead of trends, and grow your following with AI-powered 
               video creation and trend analysis tools.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
               <button
                 onClick={() => setShowConnectForm(true)}
-                className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/25 transition-all duration-300 pulse-glow border border-orange-600"
+                className="w-full sm:w-auto bg-orange-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/25 transition-all duration-300 pulse-glow border border-orange-600"
               >
                 Connect TikTok Account
               </button>
               <Link 
                 href="/dashboard" 
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300"
+                className="w-full sm:w-auto border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-white hover:text-black transition-all duration-300 text-center"
               >
                 Back to Dashboard
               </Link>
@@ -162,13 +243,13 @@ export default function TikTokPage() {
         </section>
 
         {/* Stats Section */}
-        <section className="px-6 py-20">
+        <section className="px-4 sm:px-6 py-12 sm:py-16 md:py-20">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
               {stats.map((stat, index) => (
-                <div key={index} className="space-y-2">
-                  <h3 className="text-orange-500 text-sm font-semibold uppercase tracking-wider">{stat.label}</h3>
-                  <div className="text-4xl md:text-6xl font-bold text-white">{stat.value}</div>
+                <div key={index} className="space-y-1 sm:space-y-2">
+                  <h3 className="text-orange-500 text-xs sm:text-sm font-semibold uppercase tracking-wider">{stat.label}</h3>
+                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white">{stat.value}</div>
                 </div>
               ))}
             </div>
@@ -176,25 +257,25 @@ export default function TikTokPage() {
         </section>
 
         {/* Features Section */}
-        <section className="px-6 py-20">
+        <section className="px-4 sm:px-6 py-12 sm:py-16 md:py-20">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <div className="text-center mb-8 sm:mb-12 md:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
                 TikTok Features
               </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
                 Everything you need to create viral content and dominate TikTok with trending videos.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               {features.map((feature, index) => (
-                <div key={index} className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-800 hover:border-orange-500 transition-all duration-300 group">
-                  <div className="flex items-start space-x-4">
-                    <div className="text-4xl">{feature.icon}</div>
+                <div key={index} className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 border border-gray-800 hover:border-orange-500 transition-all duration-300 group">
+                  <div className="flex items-start space-x-3 sm:space-x-4">
+                    <div className="text-2xl sm:text-3xl md:text-4xl">{feature.icon}</div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                      <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{feature.title}</h3>
+                      <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 </div>
@@ -204,24 +285,24 @@ export default function TikTokPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="px-6 py-20">
+        <section className="px-4 sm:px-6 py-12 sm:py-16 md:py-20">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gray-900/30 backdrop-blur-sm rounded-2xl p-12 border border-gray-800 relative overflow-hidden">
+            <div className="bg-gray-900/30 backdrop-blur-sm rounded-2xl p-6 sm:p-8 md:p-12 border border-gray-800 relative overflow-hidden">
               <div className="absolute inset-0 bg-linear-to-br from-orange-500/10 to-transparent"></div>
               <div className="relative z-10">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
                   Ready to Go Viral?
                 </h2>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
                   Connect your TikTok account and start creating viral content that captures attention 
                   and grows your following organically.
                 </p>
                 <button
                   onClick={() => setShowConnectForm(true)}
-                  className="inline-flex items-center bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/25 transition-all duration-300 pulse-glow"
+                  className="inline-flex items-center bg-orange-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/25 transition-all duration-300 pulse-glow"
                 >
                   Connect TikTok Now
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -283,13 +364,13 @@ export default function TikTokPage() {
       )}
 
       {/* Footer */}
-      <footer className="relative z-10 px-6 py-16 border-t border-gray-800">
+      <footer className="relative z-10 px-4 sm:px-6 py-12 sm:py-16 border-t border-gray-800">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
             {/* About Us */}
             <div>
-              <h3 className="text-orange-500 font-bold text-lg mb-4">About Us</h3>
-              <p className="text-white text-sm leading-relaxed">
+              <h3 className="text-orange-500 font-bold text-base sm:text-lg mb-3 sm:mb-4">About Us</h3>
+              <p className="text-white text-xs sm:text-sm leading-relaxed">
                 We're a team of designers, engineers, and innovators building AI tools that empower anyone 
                 to turn imagination into stunning visuals—faster, smarter, and effortlessly.
               </p>
@@ -297,30 +378,30 @@ export default function TikTokPage() {
 
             {/* Useful Links */}
             <div>
-              <h3 className="text-orange-500 font-bold text-lg mb-4">Useful Links</h3>
+              <h3 className="text-orange-500 font-bold text-base sm:text-lg mb-3 sm:mb-4">Useful Links</h3>
               <ul className="space-y-2">
-                <li><Link href="/about" className="text-white hover:text-orange-400 transition-colors">About</Link></li>
-                <li><Link href="/services" className="text-white hover:text-orange-400 transition-colors">Services</Link></li>
-                <li><Link href="/team" className="text-white hover:text-orange-400 transition-colors">Team</Link></li>
-                <li><Link href="/pricing" className="text-white hover:text-orange-400 transition-colors">Pricing</Link></li>
+                <li><Link href="/about" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">About</Link></li>
+                <li><Link href="/services" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Services</Link></li>
+                <li><Link href="/team" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Team</Link></li>
+                <li><Link href="/pricing" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Pricing</Link></li>
               </ul>
             </div>
 
             {/* Help */}
             <div>
-              <h3 className="text-orange-500 font-bold text-lg mb-4">Help</h3>
+              <h3 className="text-orange-500 font-bold text-base sm:text-lg mb-3 sm:mb-4">Help</h3>
               <ul className="space-y-2">
-                <li><Link href="#support" className="text-white hover:text-orange-400 transition-colors">Customer Support</Link></li>
-                <li><Link href="#terms" className="text-white hover:text-orange-400 transition-colors">Terms & Conditions</Link></li>
-                <li><Link href="#privacy" className="text-white hover:text-orange-400 transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/contact" className="text-white hover:text-orange-400 transition-colors">Contact Us</Link></li>
+                <li><Link href="#support" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Customer Support</Link></li>
+                <li><Link href="#terms" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Terms & Conditions</Link></li>
+                <li><Link href="#privacy" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Privacy Policy</Link></li>
+                <li><Link href="/contact" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Contact Us</Link></li>
               </ul>
             </div>
 
             {/* Connect With Us */}
             <div>
-              <h3 className="text-orange-400 font-bold text-lg mb-4">Connect With Us</h3>
-              <div className="space-y-2 text-white text-sm">
+              <h3 className="text-orange-400 font-bold text-base sm:text-lg mb-3 sm:mb-4">Connect With Us</h3>
+              <div className="space-y-2 text-white text-xs sm:text-sm">
                 <p>27 Division St, New York, NY 10002, USA</p>
                 <p>+123 324 2653</p>
                 <p>username@mail.com</p>
@@ -328,20 +409,18 @@ export default function TikTokPage() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-white text-sm">© 2025 All Right Reserved.</p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
+          <div className="border-t border-gray-800 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-white text-xs sm:text-sm">© 2025 All Right Reserved.</p>
+            <div className="flex space-x-3 sm:space-x-4 mt-4 md:mt-0">
               {/* Social Media Icons */}
               {[
                 { name: 'linkedin', icon: '/linkedin.png', href: '/platforms/linkedin' },
                 { name: 'instagram', icon: '/instagram.png', href: '/platforms/instagram' },
                 { name: 'facebook', icon: '/facebook.png', href: '/platforms/facebook' },
-                { name: 'tiktok', icon: '/tik-tok.png', href: '/platforms/tiktok' },
-                { name: 'youtube', icon: '/youtube (1).png', href: '/platforms/youtube' },
-                { name: 'twitter', icon: '/twitter1.png', href: '/platforms/twitter' }
+                { name: 'youtube', icon: '/youtube (1).png', href: '/platforms/youtube' }
               ].map((social) => (
-                <Link key={social.name} href={social.href} className="w-10 h-10 border border-gray-600 rounded-full flex items-center justify-center hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300 cursor-pointer">
-                  <img src={social.icon} alt={social.name} className="w-6 h-6 object-contain" />
+                <Link key={social.name} href={social.href} className="w-8 h-8 sm:w-10 sm:h-10 border border-gray-600 rounded-full flex items-center justify-center hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300 cursor-pointer">
+                  <img src={social.icon} alt={social.name} className="w-4 h-4 sm:w-6 sm:h-6 object-contain" />
                 </Link>
               ))}
             </div>
