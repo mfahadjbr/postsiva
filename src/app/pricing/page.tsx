@@ -96,35 +96,44 @@ export default function Pricing() {
       </div>
 
       {/* Header */}
-      <header className="relative z-10 px-6 py-4">
+      <header className="relative z-50 px-4 sm:px-6 py-3 sm:py-4">
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-orange rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">P</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-orange rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg sm:text-xl">P</span>
             </div>
-            <span className="text-white text-2xl font-bold">Postiva</span>
+            <span className="text-white text-xl sm:text-2xl font-bold">Postiva</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/services" className="text-white hover:text-orange-400 transition-colors">Services</Link>
-            <Link href="/contact" className="text-white hover:text-orange-400 transition-colors">Contact us</Link>
-            <Link href="/about" className="text-white hover:text-orange-400 transition-colors">About us</Link>
-            <Link href="/pricing" className="text-orange-400 border-b-2 border-orange-400 pb-1">Pricing</Link>
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <Link href="/services" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base relative group">
+              Services
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link href="/pricing" className="text-orange-400 border-b-2 border-orange-400 pb-1 text-sm xl:text-base">Pricing</Link>
+            <Link href="/contact" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base relative group">
+              Contact us
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link href="/about" className="text-white hover:text-orange-400 transition-colors text-sm xl:text-base relative group">
+              About us
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           </div>
 
-          {/* Auth Buttons */}
-          <div className="flex items-center space-x-3">
+          {/* Desktop Auth Buttons */}
+          <div className="hidden lg:flex items-center space-x-3">
             <Link 
               href="/auth/signin" 
-              className="text-white hover:text-orange-400 transition-colors font-medium"
+              className="text-white hover:text-orange-400 transition-colors font-medium text-sm xl:text-base"
             >
               Login
             </Link>
             <Link 
               href="/auth/signup" 
-              className="bg-gradient-orange text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 pulse-glow"
+              className="bg-gradient-orange text-white px-4 xl:px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 pulse-glow text-sm xl:text-base"
             >
               Sign Up
             </Link>
@@ -132,7 +141,7 @@ export default function Pricing() {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-white"
+            className="lg:hidden text-white p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,27 +152,97 @@ export default function Pricing() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-gray-800">
-            <div className="px-6 py-4 space-y-4">
-              <Link href="/services" className="block text-white hover:text-orange-400 transition-colors">Services</Link>
-              <Link href="/contact" className="block text-white hover:text-orange-400 transition-colors">Contact us</Link>
-              <Link href="/about" className="block text-white hover:text-orange-400 transition-colors">About us</Link>
-              <Link href="/pricing" className="block text-orange-400">Pricing</Link>
-              
-              {/* Mobile Auth Buttons */}
-              <div className="pt-4 border-t border-gray-700 space-y-3">
-                <Link 
-                  href="/auth/signin" 
-                  className="block text-white hover:text-orange-400 transition-colors font-medium"
-                >
-                  Login
-                </Link>
-                <Link 
-                  href="/auth/signup" 
-                  className="block bg-gradient-orange text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 text-center"
-                >
-                  Sign Up
-                </Link>
+          <div className="lg:hidden fixed inset-0 z-9999">
+            {/* Background Overlay */}
+            <div className="absolute inset-0 bg-orange-500/95 backdrop-blur-md"></div>
+            
+            {/* Menu Content */}
+            <div className="relative h-full overflow-y-auto z-10000">
+              <div className="bg-orange-600/90 backdrop-blur-sm border-t border-orange-400/30">
+                {/* Close Button */}
+                <div className="flex justify-end p-4">
+                  <button 
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-white hover:text-orange-200 transition-colors p-2"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <div className="px-4 sm:px-6 pb-6 space-y-6">
+                  {/* Navigation Links */}
+                  <div className="space-y-4">
+                    <Link 
+                      href="/services" 
+                      className="block text-white hover:text-orange-200 transition-colors py-4 text-lg text-center font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Services
+                    </Link>
+                    <Link 
+                      href="/pricing" 
+                      className="block text-orange-200 py-4 text-lg text-center font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Pricing
+                    </Link>
+                    <Link 
+                      href="/contact" 
+                      className="block text-white hover:text-orange-200 transition-colors py-4 text-lg text-center font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Contact us
+                    </Link>
+                    <Link 
+                      href="/about" 
+                      className="block text-white hover:text-orange-200 transition-colors py-4 text-lg text-center font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      About us
+                    </Link>
+                  </div>
+
+                  {/* Pricing AI Powered Card */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
+                    <div className="text-center">
+                      <h3 className="text-white text-xl font-bold mb-3">Pricing AI Powered</h3>
+                      <div className="flex justify-center mb-2">
+                        <div className="flex space-x-1">
+                          <span className="text-yellow-300 text-lg">★★★★★</span>
+                        </div>
+                      </div>
+                      <p className="text-orange-100 text-sm">Flexible Pricing Plans</p>
+                    </div>
+                  </div>
+
+                  {/* Auth Buttons */}
+                  <div className="flex flex-col space-y-3">
+                    <Link 
+                      href="/auth/signin" 
+                      className="w-full bg-white text-orange-600 px-6 py-4 rounded-xl font-bold text-lg hover:bg-orange-100 transition-all duration-300 text-center shadow-lg"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Login
+                    </Link>
+                    <Link 
+                      href="/auth/signup" 
+                      className="w-full bg-orange-500 text-white px-6 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all duration-300 text-center shadow-lg"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
+
+                  {/* Descriptive Text */}
+                  <div className="pt-4">
+                    <p className="text-white text-sm leading-relaxed text-center">
+                      Choose the perfect plan for your social media automation needs. 
+                      Start free and upgrade as you grow.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -405,13 +484,13 @@ export default function Pricing() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 px-6 py-16 border-t border-gray-800">
+      <footer className="relative z-10 px-4 sm:px-6 py-12 sm:py-16 border-t border-gray-800">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
             {/* About Us */}
             <div>
-              <h3 className="text-orange-400 font-bold text-lg mb-4">About Us</h3>
-              <p className="text-white text-sm leading-relaxed">
+              <h3 className="text-orange-400 font-bold text-base sm:text-lg mb-3 sm:mb-4">About Us</h3>
+              <p className="text-white text-xs sm:text-sm leading-relaxed">
                 We're a team of designers, engineers, and innovators building AI tools that empower anyone 
                 to turn imagination into stunning visuals—faster, smarter, and effortlessly.
               </p>
@@ -419,30 +498,30 @@ export default function Pricing() {
 
             {/* Useful Links */}
             <div>
-              <h3 className="text-orange-400 font-bold text-lg mb-4">Useful Links</h3>
+              <h3 className="text-orange-400 font-bold text-base sm:text-lg mb-3 sm:mb-4">Useful Links</h3>
               <ul className="space-y-2">
-                <li><Link href="/about" className="text-white hover:text-orange-400 transition-colors">About</Link></li>
-                <li><Link href="/services" className="text-white hover:text-orange-400 transition-colors">Services</Link></li>
-                <li><Link href="#team" className="text-white hover:text-orange-400 transition-colors">Team</Link></li>
-                <li><Link href="/pricing" className="text-white hover:text-orange-400 transition-colors">Pricing</Link></li>
+                <li><Link href="/about" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">About</Link></li>
+                <li><Link href="/services" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Services</Link></li>
+                <li><Link href="/team" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Team</Link></li>
+                <li><Link href="/pricing" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Pricing</Link></li>
               </ul>
             </div>
 
             {/* Help */}
             <div>
-              <h3 className="text-orange-400 font-bold text-lg mb-4">Help</h3>
+              <h3 className="text-orange-400 font-bold text-base sm:text-lg mb-3 sm:mb-4">Help</h3>
               <ul className="space-y-2">
-                <li><Link href="#support" className="text-white hover:text-orange-400 transition-colors">Customer Support</Link></li>
-                <li><Link href="#terms" className="text-white hover:text-orange-400 transition-colors">Terms & Conditions</Link></li>
-                <li><Link href="#privacy" className="text-white hover:text-orange-400 transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/contact" className="text-white hover:text-orange-400 transition-colors">Contact Us</Link></li>
+                <li><Link href="#support" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Customer Support</Link></li>
+                <li><Link href="#terms" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Terms & Conditions</Link></li>
+                <li><Link href="#privacy" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Privacy Policy</Link></li>
+                <li><Link href="/contact" className="text-white hover:text-orange-400 transition-colors text-xs sm:text-sm">Contact Us</Link></li>
               </ul>
             </div>
 
             {/* Connect With Us */}
             <div>
-              <h3 className="text-orange-400 font-bold text-lg mb-4">Connect With Us</h3>
-              <div className="space-y-2 text-white text-sm">
+              <h3 className="text-orange-400 font-bold text-base sm:text-lg mb-3 sm:mb-4">Connect With Us</h3>
+              <div className="space-y-2 text-white text-xs sm:text-sm">
                 <p>27 Division St, New York, NY 10002, USA</p>
                 <p>+123 324 2653</p>
                 <p>username@mail.com</p>
@@ -450,19 +529,19 @@ export default function Pricing() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-white text-sm">© 2024 All Right Reserved.</p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
+          <div className="border-t border-gray-800 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-white text-xs sm:text-sm">© 2025 All Right Reserved.</p>
+            <div className="flex space-x-3 sm:space-x-4 mt-4 md:mt-0">
               {/* Social Media Icons */}
               {[
-                { name: 'facebook', icon: '📘' },
-                { name: 'instagram', icon: '📷' },
-                { name: 'twitter', icon: '🐦' },
-                { name: 'google', icon: '🔍' }
+                { name: 'linkedin', icon: '/linkedin.png', href: '/platforms/linkedin' },
+                { name: 'instagram', icon: '/instagram.png', href: '/platforms/instagram' },
+                { name: 'facebook', icon: '/facebook.png', href: '/platforms/facebook' },
+                { name: 'youtube', icon: '/youtube (1).png', href: '/platforms/youtube' }
               ].map((social) => (
-                <div key={social.name} className="w-10 h-10 border border-gray-600 rounded-full flex items-center justify-center hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300 cursor-pointer">
-                  <span className="text-sm">{social.icon}</span>
-                </div>
+                <Link key={social.name} href={social.href} className="w-8 h-8 sm:w-10 sm:h-10 border border-gray-600 rounded-full flex items-center justify-center hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300 cursor-pointer">
+                  <img src={social.icon} alt={social.name} className="w-4 h-4 sm:w-6 sm:h-6 object-contain" />
+                </Link>
               ))}
             </div>
           </div>
