@@ -60,6 +60,15 @@ export default function Dashboard() {
       href: '/platforms/twitter',
       stats: '450M+ users',
       highlighted: false
+    },
+    {
+      name: 'Pinterest',
+      description: 'Visual discovery and inspiration sharing',
+      icon: '/pinterest.png',
+      color: 'from-red-500 to-red-600',
+      href: '/platforms/pinterest',
+      stats: '450M+ users',
+      highlighted: false
     }
   ];
 
@@ -277,7 +286,8 @@ export default function Dashboard() {
                                             platform.name === 'TikTok' ? '🎵' : 
                                             platform.name === 'YouTube' ? '📺' : 
                                             platform.name === 'Twitter' ? '🐦' : 
-                                            platform.name === 'LinkedIn' ? '💼' : '👥';
+                                            platform.name === 'LinkedIn' ? '💼' : 
+                                            platform.name === 'Pinterest' ? '📌' : '👥';
                             parent.className = 'w-20 h-20 bg-gray-800 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-4xl';
                           }
                         }}
